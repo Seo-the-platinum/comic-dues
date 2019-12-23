@@ -8,6 +8,9 @@ const Container= styled.div`
   height: 50px;
   justify-content: space-around;
   width: 33%;
+  @media(min-width: 320px) and (max-width: 600px) {
+    width: 100%;
+  }
 `
 const StyledLink= styled(NavLink)`
   color: white;

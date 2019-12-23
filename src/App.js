@@ -1,5 +1,4 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import styled from 'styled-components'
@@ -8,6 +7,10 @@ import Home from './components/Home'
 import News from './components/News'
 import Gallery from './components/Gallery'
 import Reviews from './components/Reviews'
+import Loading from './components/Loading'
+import { connect } from 'react-redux'
+import { handleInitialData } from './actions/shared'
+
 
 const Container= styled.div`
   display: flex;
@@ -32,6 +35,9 @@ const HomeContainer= styled.div`
   margin-top: 2%;
   width: 100%;
   height: 100%;
+  @media(min-width: 320px) and (max-width: 600px) {
+    height: 100%;
+  }
 `
 const NewsContainer= styled.div`
   align-items: center;
@@ -54,7 +60,29 @@ const ReviewsContainer= styled.div`
   margin-left: 2%;
   margin-right: 2%;
 `
-function App() {
+class App extends Component {
+  state ={
+    data: false,
+  }
+  componentDidMount() {
+      this.props.dispatch(handleInitialData())
+      .then(this.setState(currState=> ({
+        currState,
+        data: true,
+      })))
+  }
+  render() {
+  const { data }= this.state
+  console.log(data)
+  if (data === false) {
+    return(
+      <Container>
+        <Router>
+          <Route path='/' component={ Loading }/>
+        </Router>
+      </Container>
+    )
+  }
   return (
     <Container>
       <Router>
@@ -76,6 +104,14 @@ function App() {
       </Router>
     </Container>
   );
+ }
 }
 
-export default App;
+function mapStateToProps({imgs,reviews,articles}, props) {
+  return {
+    imgs,
+    reviews,
+    articles,
+  }
+}
+export default connect(mapStateToProps)(App);
