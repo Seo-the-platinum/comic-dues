@@ -3,16 +3,23 @@ import styled from 'styled-components'
 import { connect } from 'react-redux'
 
 const Container= styled.div`
-  border: solid 1px black;
+  align-items: center;
   display: flex;
-  justify-content: center;
-  width: 33%;
+  flex-direction: column;
+  font-family: 'Lobster', cursive;
+  width: 40%;
   @media(min-width: 320px) and (max-width: 600px){
-    flex-direction: column;
     margin-top: 10px;
     width: 100%;
   }
 `
+const Doc= styled.div`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+`
+
 class BreakingNews extends Component {
 
   render() {
@@ -24,14 +31,19 @@ class BreakingNews extends Component {
     return(
       <Container>
         <h2>
-          Breaking News
+          Breaking News!
         </h2>
       { articles[latestNews] === undefined ? (
         null
       ):(
-        <h2>
-        {articles[latestNews].title}
-        </h2>
+        <Doc>
+          <h2>
+            {articles[latestNews].title}
+          </h2>
+          <p>
+            {articles[latestNews].body}
+          </p>
+        </Doc>
       )}
       </Container>
     )

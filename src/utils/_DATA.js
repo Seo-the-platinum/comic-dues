@@ -55,6 +55,14 @@ let articles= {
   }
 }
 
+let cow= {
+  img: 'images/adventure_time_resized.jpg',
+  talent: 'unknown',
+  character: 'Finn',
+  series: 'Adventure Time',
+  handle: 'unknown',
+  alt: 'Cosplay of Finn from adventure time',
+}
 export function _getImgs() {
   return new Promise((res, rej)=> {
     setTimeout(()=> res({...imgs}),1000)
@@ -70,5 +78,11 @@ export function _getReviews() {
 export function _getArticles() {
   return new Promise ((res, rej)=> {
     setTimeout(()=> res({...articles}),1000)
+  })
+}
+
+export function _getCosplayer() {
+  return new Promise ((res, rej)=> {
+    setTimeout(()=> res({...cow}), 1000)
   })
 }

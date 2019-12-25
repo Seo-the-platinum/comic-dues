@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import Carousel from 'react-bootstrap/Carousel';
 import BreakingNews from './BreakingNews';
+import Cow from './Cow'
+import Upcoming from './Upcoming'
 import { connect } from 'react-redux';
 
 const CarouselImg= styled.img`
@@ -25,7 +27,7 @@ const Container= styled.div`
   }
 `
 const CustomCarousel= styled(Carousel)`
-  width: 66%;
+  width: 60%;
   @media(min-width: 320px) and (max-width: 600px) {
     width: 100%;
     margin-left: 5px;
@@ -50,6 +52,8 @@ class Home extends Component {
             })}
         </CustomCarousel>
         <BreakingNews/>
+        <Cow />
+        <Upcoming />
      </Container>
     )
   }
