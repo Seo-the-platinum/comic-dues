@@ -37,13 +37,23 @@ let imgs= {
 
 let reviews= {
   starWarsTros: {
-  title: 'Star Wars: The Rise of Skywalker',
-  format: 'Motion Picture',
-  review: 'Lorem ipsum dolor sit amet, pri ex dicit placerat. Omnium labitur ne.',
-  critic: 'Jesse Sosa',
-  rating: 5,
-  imgUrl: 'images/star-wars-banner.webp'
-  }
+    date: Date.parse('10 Jan 2020'),
+    title: 'Star Wars: The Rise of Skywalker',
+    product: 'Movie',
+    review: 'Lorem ipsum dolor sit amet, pri ex dicit placerat. Omnium labitur ne.',
+    critic: 'Jesse Sosa',
+    rating: 3,
+    imgUrl: 'images/star-wars-banner.jpg',
+  },
+  spidermanFarfromHome: {
+    date: Date.parse('08 Jul 2019'),
+    tile: 'Spider-Man: Far From Home',
+    product: 'Movie',
+    review: 'Lorem ipsum dolor sit amet, pri ex dicit placerat. Omnium labitur ne.',
+    critic: 'Robert Mejia',
+    rating: 5,
+    imgUrl: 'images/spidermanfar.jpg',
+  },
 }
 
 let articles= {
@@ -63,6 +73,31 @@ let cow= {
   handle: 'unknown',
   alt: 'Cosplay of Finn from adventure time',
 }
+
+let events= {
+  wc20: {
+    event: 'Wonder con',
+    dates: [ Date.parse('10 Apr 2020'), Date.parse('11 Apr 2020'), Date.parse('11 Apr 2020')],
+    img: 'images/wondercon.jpg',
+    loc: 'Anaheim, Ca',
+    venue: 'Anaheim Convention Center',
+  },
+  cc20: {
+    event: 'Comic con',
+    dates: [Date.parse('20 Jul 2020'),Date.parse('21 Jul 2020'),Date.parse('22 Jul 2020')],
+    img: 'images/sdcc.jpg',
+    loc: 'San Diego, Ca',
+    venue: 'San Diego Convention Center',
+  },
+  ae20: {
+    event: 'Anime Expo',
+    dates: [Date.parse('18 Aug 2020'), Date.parse('19 Aug 2020'), Date.parse('20 Aug 2020')],
+    img: 'images/ax20.jpg',
+    loc: 'Los Angeles, Ca',
+    venue: 'Los Angeles Convention Center',
+  },
+}
+
 export function _getImgs() {
   return new Promise((res, rej)=> {
     setTimeout(()=> res({...imgs}),1000)
@@ -84,5 +119,11 @@ export function _getArticles() {
 export function _getCosplayer() {
   return new Promise ((res, rej)=> {
     setTimeout(()=> res({...cow}), 1000)
+  })
+}
+
+export function _getEvents() {
+  return new Promise ((res, rej)=> {
+    setTimeout(()=> res({...events}, 1000))
   })
 }

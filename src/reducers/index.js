@@ -3,6 +3,7 @@ import imgs from './imgs'
 import reviews from './reviews'
 import articles from './articles'
 import cow from './cow'
+import events from './events'
 
 /*
   combine the 3 reducers and slices of state into one using combineReducers
@@ -13,4 +14,5 @@ export default combineReducers({
   reviews,
   articles,
   cow,
+  events,
 })
