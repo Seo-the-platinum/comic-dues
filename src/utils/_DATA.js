@@ -37,7 +37,7 @@ let imgs= {
 
 let reviews= {
   starWarsTros: {
-    date: Date.parse('10 Jan 2020'),
+    date: '10 Jan 2020',
     title: 'Star Wars: The Rise of Skywalker',
     product: 'Movie',
     review: 'Lorem ipsum dolor sit amet, pri ex dicit placerat. Omnium labitur ne.',
@@ -46,7 +46,7 @@ let reviews= {
     imgUrl: 'images/star-wars-banner.jpg',
   },
   spidermanFarfromHome: {
-    date: Date.parse('08 Jul 2019'),
+    date: '08 Jul 2019',
     tile: 'Spider-Man: Far From Home',
     product: 'Movie',
     review: 'Lorem ipsum dolor sit amet, pri ex dicit placerat. Omnium labitur ne.',
@@ -58,10 +58,21 @@ let reviews= {
 
 let articles= {
   article1: {
-    title: 'Final Fantasy 7 Remake breaks the internet!',
-    writtenBy: 'Eliseo Flores',
+    alt: 'sephiroth banner',
+    author: 'Eliseo Flores',
+    img: 'images/ff7remake.jpg',
     body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-    posted: `21 Dec 2019`,
+    posted: '21 Dec 2019',
+    title: 'Final Fantasy 7 Remake breaks the internet!',
+  },
+  article2: {
+    alt: 'byleth reveal',
+    author:  'Eliseo Flores',
+    body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    img: 'images/byleth.jpg',
+    posted: '02 Feb 2020',
+    title: 'Super Smash Bros Ultimate adds another Fire Emblem character',
+
   }
 }
 
@@ -76,22 +87,22 @@ let cow= {
 
 let events= {
   wc20: {
-    event: 'Wonder con',
-    dates: [ Date.parse('10 Apr 2020'), Date.parse('11 Apr 2020'), Date.parse('11 Apr 2020')],
+    event: 'WonderCon',
+    dates: [ '10 Apr 2020', '11 Apr 2020', '11 Apr 2020'],
     img: 'images/wondercon.jpg',
     loc: 'Anaheim, Ca',
     venue: 'Anaheim Convention Center',
   },
   cc20: {
-    event: 'Comic con',
-    dates: [Date.parse('20 Jul 2020'),Date.parse('21 Jul 2020'),Date.parse('22 Jul 2020')],
+    event: 'ComicCon',
+    dates: ['20 Jul 2020','21 Jul 2020','22 Jul 2020'],
     img: 'images/sdcc.jpg',
     loc: 'San Diego, Ca',
     venue: 'San Diego Convention Center',
   },
   ae20: {
     event: 'Anime Expo',
-    dates: [Date.parse('18 Aug 2020'), Date.parse('19 Aug 2020'), Date.parse('20 Aug 2020')],
+    dates: ['18 Aug 2020','19 Aug 2020','20 Aug 2020'],
     img: 'images/ax20.jpg',
     loc: 'Los Angeles, Ca',
     venue: 'Los Angeles Convention Center',
