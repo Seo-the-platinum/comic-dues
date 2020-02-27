@@ -32,8 +32,10 @@ const Body= styled.div`
 class News extends Component {
   render() {
     const { articles }= this.props
-    const articlesArray= Object.keys(articles)
-
+    const articlesArray= Object.keys(articles).sort(function(a,b) {
+      return Date.parse(articles[b].posted)- Date.parse(articles[a].posted)
+    })
+  console.log(articlesArray);
     return (
       <Container>
         <h2>News</h2>

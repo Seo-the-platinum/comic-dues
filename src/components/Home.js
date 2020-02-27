@@ -5,6 +5,7 @@ import BreakingNews from './BreakingNews';
 import Cow from './Cow'
 import Upcoming from './Upcoming'
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom'
 
 const CarouselImg= styled.img`
   width: 100%;
@@ -34,13 +35,25 @@ const CustomCarousel= styled(Carousel)`
     margin-right: 5px;
   }
 `
+const StyledLink= styled(Link)`
+  color: white;
+`
 
 class Home extends Component {
 
   render() {
-    const { imgs }= this.props
+    const { imgs, reviews, articles }= this.props
     const imgsArray= Object.keys(imgs)
-    const bannerImgs= (imgsArray.slice(imgsArray.length-3))
+    const bannerImgs= (imgsArray.slice(imgsArray.length-1))
+    const reviewsArray= Object.keys(reviews).sort(function(a,b) {
+      return Date.parse(reviews[a].date) - Date.parse(reviews[b].date)
+    })
+    const reviewSlide= reviewsArray[reviewsArray.length-1]
+    const articlesArray= Object.keys(articles).sort(function(a,b){
+      return Date.parse(articles[a].posted)- Date.parse(articles[b].posted)
+    })
+    const articleSlide= articlesArray[articlesArray.length-1]
+
     return (
       <Container>
         <CustomCarousel>
@@ -48,8 +61,30 @@ class Home extends Component {
             return (
               <Carousel.Item key={img}>
                 <CarouselImg src= {imgs[img].url} alt={imgs[img].alt} key={imgs[img].character} />
+                <Carousel.Caption style={{background: 'rgba(0,0,0,.7)',left:'0%', textAlign: 'left'}}>
+                  <h3>Cosplay</h3>
+                  <StyledLink to='/Gallery'><p> Check out our Gallery of cosplay photos!</p></StyledLink>
+                </Carousel.Caption>
               </Carousel.Item>)
             })}
+            { reviews[reviewSlide] !== undefined ? (
+              <Carousel.Item>
+                <CarouselImg src={reviews[reviewSlide].imgUrl} alt='review poster'/>
+                <Carousel.Caption style={{background:'rgba(0,0,0,.7)',left: '0%', textAlign: 'left'}}>
+                  <h3>Reviews</h3>
+                  <StyledLink to ='/Reviews'><p> Reviews of recent movies</p></StyledLink>
+                </Carousel.Caption>
+              </Carousel.Item>
+            ) : null}
+            { articles[articleSlide] !== undefined ? (
+              <Carousel.Item>
+                <CarouselImg src={articles[articleSlide].bannerImg} alt='article poster'/>
+                <Carousel.Caption style={{background:'rgba(0,0,0,.7)',left: '0%', textAlign: 'left'}}>
+                  <h3>Articles</h3>
+                  <StyledLink to ='/News'><p> Articles written by the staff</p></StyledLink>
+                </Carousel.Caption>
+              </Carousel.Item>
+            ): null }
         </CustomCarousel>
         <BreakingNews/>
         <Cow />
@@ -59,9 +94,11 @@ class Home extends Component {
   }
 }
 
-function mapStateToProps({imgs}) {
+function mapStateToProps({ imgs, articles, reviews }) {
   return {
     imgs,
+    articles,
+    reviews,
   }
 }
 export default connect(mapStateToProps)(Home)

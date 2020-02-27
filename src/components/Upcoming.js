@@ -30,7 +30,6 @@ class Upcoming extends Component {
 
       return Date.parse(events[a].dates[0])-Date.parse(events[b].dates[0])
     })
-    console.log(orderedEvents)
     return (
       <Container>
         <h2> Upcoming Events</h2>
